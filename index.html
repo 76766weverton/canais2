@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Video Player</title>
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <style>
+        /* Estilo base para os players */
+        .video-container {
+            max-width: 640px; /* Defina a largura máxima desejada */
+            margin: 0 auto; /* Centraliza os players */
+        }
+
+        /* Consulta de mídia para ajustar estilos para telas menores */
+        @media (max-width: 640px) {
+            .video-container {
+                max-width: 100%; /* Para telas menores, ocupa a largura total disponível */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="video-container" id="player1"></div>
+    <div class="video-container" id="player2"></div>
+    <div class="video-container" id="player3"></div>
+
+    <script>
+        var videoIds = ['BJ3Yv572V1A', 'gsA3-3_Cl8s', 'AxR7mNkiQkA'];
+        var players = [];
+
+        function onYouTubeIframeAPIReady() {
+            for (var i = 0; i < videoIds.length; i++) {
+                players[i] = new YT.Player('player' + (i + 1), {
+                    height: '360',
+                    width: '100%', // Alterado para 100% para se adaptar à largura do contêiner pai
+                    videoId: videoIds[i],
+                    playerVars: {
+                        controls: 0,
+                        fs: 0,
+                        modestbranding: 1,
+                        showinfo: 0,
+                        rel: 0
+                    }
+                });
+            }
+        }
+    </script>
+</body>
+
+</html>
+
+
+
